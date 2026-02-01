@@ -1,0 +1,185 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #ff9a9e, #fecfef);
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto; /* Permitir scroll en pantallas pequeñas; el confeti sigue siendo fixed */
+}
+
+.container {
+    max-width: 700px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 2s ease-in;
+}
+
+/* Responsive: ajustes para móviles y pantallas pequeñas */
+@media (max-width: 600px) {
+    .container {
+        max-width: 95%;
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    h1 {
+        font-size: 1.6em;
+        margin-bottom: 12px;
+    }
+
+    .message {
+        font-size: 1em;
+        margin-bottom: 12px;
+    }
+
+    .counter { font-size: 1em; }
+
+    .slider {
+        margin-bottom: 16px;
+    }
+
+    .slider img {
+        width: 100%; /* En móviles ocupar el ancho disponible */
+        border-radius: 8px;
+    }
+
+    .slider button {
+        padding: 8px;
+    }
+
+    button { padding: 10px 14px; font-size: 0.95em; }
+
+    .hearts { font-size: 1.4em; }
+}
+
+/* Pequeños ajustes para pantallas muy pequeñas */
+@media (max-width: 380px) {
+    h1 { font-size: 1.3em; }
+    .message { font-size: 0.95em; }
+    .slider button { padding: 6px; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #e91e63;
+    margin-bottom: 20px;
+}
+
+.message {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.counter {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.slider {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.slider img {
+    /* Hacer las fotos un poco más pequeñas y centrarlas */
+    width: 70%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.slider img:hover {
+    transform: scale(1.05);
+}
+
+.slider button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#prevBtn { left: 10px; }
+#nextBtn { right: 10px; }
+
+button {
+    background: #e91e63;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #c2185b;
+}
+
+#secretMessage {
+    font-size: 1.2em;
+    color: #e91e63;
+    margin-bottom: 20px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+#secretMessage:not(.hidden) {
+    opacity: 1;
+}
+
+.hearts {
+    font-size: 2em;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Confeti */
+#confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #e91e63;
+    animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+    to { transform: translateY(100vh) rotate(360deg); }
+}
